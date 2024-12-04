@@ -1,0 +1,26 @@
+<br><br>
+
+<label for="input name">Name: </label>
+<input type="text" #Creator>
+<button (click)="Create(Creator.value);">Create</button>
+
+
+<br><br>
+<button (click)="ToggleRead();">Read</button>
+@if(ReadState) {
+    Dette er et array {{this.Read()}}
+}
+<br><br>
+<label for="input name">Name: </label><br>  
+<input type="text" #UpdateName><br>
+<label for="input name">New Name: </label><br>  
+<input type="text" #UpdateNewName>
+<button (click)="Update(UpdateName.value, UpdateNewName.value);">Update at and with name</button>
+
+<br><br>
+<!--<input type="text" #Deletor>
+<button (click)="DeleteValue(Deletor.value);">Create</button><br><br>-->
+<button (click)="DeleteLast();">Delete Last</button>
+
+
+
