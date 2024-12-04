@@ -15,7 +15,7 @@ export class GenreComponent {
   ngOnInit(){
     this.service.getallGenres().subscribe(
     data=>{
-      console.log("test");
+      console.log("Success To Get Genres");
   
       this.genreList=data;
       console.log(this.genreList);

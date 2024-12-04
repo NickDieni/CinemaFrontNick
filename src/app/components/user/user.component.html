@@ -1,5 +1,6 @@
 <p>user works!</p>
-Her er alle vores Users<br>
-@for (userObj of userList; track $index){
-    {{userObj.Username}}
-}
+<br><br>
+<label for="input name">User Id: </label><br>  
+<input type="text" #UserId>
+<button (click)="deleteUserById(+UserId.value);">Delete with Id</button>
+<button (click)="getUserWithId(+UserId.value);">Get with Id</button>

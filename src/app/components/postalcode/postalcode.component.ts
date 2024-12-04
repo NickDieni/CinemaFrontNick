@@ -14,7 +14,7 @@ export class PostalcodeComponent {
   ngOnInit(){
     this.service.getallPostalCodes().subscribe(
     data=>{
-      console.log("test");
+      console.log("Success To Get PostalCodes");
   
       this.postalList=data;
       console.log(this.postalList);

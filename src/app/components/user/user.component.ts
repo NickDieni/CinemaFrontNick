@@ -23,14 +23,17 @@ export class UserComponent {
     // GetAllUsers - returnerer alle User objekter
     getall():User[]{return this.userList; }
 
-    ngOnInit(){
-    this.service.getallUser().subscribe(
-    data=>{
-      console.log("test");
+    deleteUserById(UserID:number){
+      this.service.delete(UserID);
 
-      this.userList=data;
-      console.log(this.userList);
-      })
+      this.userList = this.userList.filter((user) => user.UserId !== UserID);
+    }
+    getUserWithId(UserID:number){
+      this.service.getUserById(UserID).subscribe(data => {console.log("Success to Get User By Id");this.userList=data;console.log(this.userList);})
+    }
+
+    ngOnInit(){
+      this.service.getallUser().subscribe(data=>{console.log("Success To Get All Users"); this.userList=data;console.log(this.userList);})
     } 
 
   constructor(private service:UserService){}
