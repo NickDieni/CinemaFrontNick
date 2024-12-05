@@ -9,9 +9,12 @@ import { Genre } from '../../models/genre';
   styleUrl: './test-component.component.css'
 })
 export class TestComponentComponent {
+  getList : string[]=[];
+  
 
   ngOnInit(){
-    this.service.getAlls("Genres");
+    this.service.getAlls("Genres").subscribe(
+      data=>{console.log("Success To Get All "+"Genres", data);});
   }
 
   constructor(private service:GenericService<Genre>){}

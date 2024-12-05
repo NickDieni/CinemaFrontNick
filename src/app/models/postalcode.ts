@@ -1,4 +1,4 @@
 export class PostalCode {
-    PostalCodeId : number = 0;
-    PostalName : string = "";
+    postalCodeId : number = 0;
+    postalName : string = "";
 }

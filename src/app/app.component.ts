@@ -4,11 +4,12 @@ import { CrudComponent } from "./components/crud/crud.component";
 import { UserComponent } from "./components/user/user.component";
 import { PostalcodeComponent } from "./components/postalcode/postalcode.component";
 import { GenreComponent } from "./components/genre/genre.component";
+import { TestComponentComponent } from "./components/test-component/test-component.component";
 
 //Decorator to define the component
 @Component({
   selector: 'app-root', //How you get access your class
-  imports: [RouterOutlet, CrudComponent, UserComponent, PostalcodeComponent, GenreComponent],
+  imports: [RouterOutlet, CrudComponent, UserComponent, PostalcodeComponent, GenreComponent, TestComponentComponent],
   templateUrl: './app.component.html', //Your html page
   styleUrl: './app.component.css' //Defines if it should be styled
 })

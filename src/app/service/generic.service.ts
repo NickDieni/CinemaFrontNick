@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class GenericService<ExampleModel> {
+export class GenericService<T> {
     //ArrayName : any[] = [];
-    urlTest: string = "https://localhost:7254/api/"
-    getAlls(endPoint:string):Observable<ExampleModel[]>{
-      return this.http.get<ExampleModel[]>(this.urlTest+"/"+endPoint);
+    urlTest: string = "https://localhost:7254/api"
+    getAlls(endPoint:string):Observable<T[]>{
+      return this.http.get<T[]>(this.urlTest+"/"+endPoint);
   
     }
 
