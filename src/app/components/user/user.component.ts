@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../service/user.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostalCode } from '../../models/postalcode';
 import { PostalcodeService } from '../../service/postalcode.service';
 
@@ -26,7 +26,6 @@ export class UserComponent {
 
   // HTML Forms -- Reactive Forms
   userForm: FormGroup = new FormGroup({
-    UserId: new FormControl(),
     UserName: new FormControl(),
     Password: new FormControl(),
     Email: new FormControl(),
@@ -34,7 +33,19 @@ export class UserComponent {
   });
 
   onSubmit(): void {
-    console.log(this.userForm.get(['Username'])?.value);
+    if (this.userForm.valid){
+      const formData = this.userForm.value;
+      this.service.createUser(formData).subscribe({
+        next: () => {
+          alert("User created successfully!");
+        },
+        error: () =>{
+          alert("User creation failed!");
+        },
+      });
+    } else {
+      alert ("Please Fill out the form or else...")
+    }
   }
   JuleNisse(idToDeleteAgain:number): void {
     console.log("Deleting");
@@ -69,6 +80,14 @@ export class UserComponent {
 
       this.postalList = data1;
     });
+
+    this.userForm = new FormGroup({
+      UserName: new FormControl('', [Validators.required]),
+      Password: new FormControl('', [Validators.required]),
+      Email: new FormControl('', [Validators.required]),
+      PostalCodeId: new FormControl('', [Validators.required]),
+    });
+
     return this.userList, this.postalList;
   }
 

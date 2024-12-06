@@ -6,36 +6,38 @@
 <button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
 
 <br /><br />
+
+
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <label for="Uname">User name:</label><br />
-  <input
-    type="text"
-    name="username"
-    id="username"
-    formControlName="UserName"
-  /><br />
+  <input type="text" name="username" id="username" formControlName="UserName" /><br />
+
   <label for="Pass">Password:</label><br />
-  <input type="text" formControlName="Password" /><br />
+  <input type="text" name="password" id="password" formControlName="Password" /><br />
+
   <label for="Email">Email:</label><br />
-  <input type="text" formControlName="Email" /><br />
+  <input type="text" name="email" id="email" formControlName="Email" /><br />
+
   <label for="PostalCodes">PostalCodes</label><br />
   <select name="postalcodeid" id="postalcodeid">
     <option value="">--Please choose an option--</option>
 
     @for (postalcode of this.postalList; track $index) {
     <option [value]="$index">{{ postalcode.postalCodeId }}</option>
-    }</select
-  ><br />
-  <button (submit)="onSubmit()">TRYK MIG</button>
+    }
+  </select><br />
+  <button type="submit">TRYK MIG</button>
 </form>
+
+
 <table>
   <thead>
     <tr>
       <th><label for="UserId">Id</label></th>
-      <th><label for="Username">Username</label></th>
+      <th><label for="Username">User Name</label></th>
       <th><label for="Password">Password</label></th>
       <th><label for="Email">Email</label></th>
-      <th><label for="PostalCodeId">Username</label></th>
+      <th><label for="PostalCodes">PostalCodes</label></th>
     </tr>
   </thead>
   <tbody>
@@ -45,7 +47,7 @@
       <td>{{ user.userName }}</td>
       <td>{{ user.password }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.password }}</td>
+      <td>{{ user.postalCodes }}</td>
       <button (click)="deleteUserById(user.userId)">SLET</button>
     </tr>
     }

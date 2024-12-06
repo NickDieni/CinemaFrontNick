@@ -13,8 +13,7 @@ export class TestComponentComponent {
   
 
   ngOnInit(){
-    this.service.getAlls("Genres").subscribe(
-      data=>{console.log("Success To Get All "+"Genres", data);});
+    this.service.genericGetAll("Genres").subscribe( data=>{console.log("Success To Get All "+"Genres", data);});
   }
 
   constructor(private service:GenericService<Genre>){}

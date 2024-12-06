@@ -25,18 +25,20 @@ export class UserService {
   //getall2():User[]{return this.userList; }
 
   //URL
-  urlGetUser: string = "https://localhost:7254/api/Users";
+  urlUser: string = "https://localhost:7254/api/Users";
 
   delete(idToDelete:number):void{
-    this.http.delete(this.urlGetUser+"/"+idToDelete).subscribe();
+    this.http.delete(this.urlUser+"/"+idToDelete).subscribe();
   }
   getUserById(idToGet:number):Observable<User[]>{
-    return this.http.get<User[]>(this.urlGetUser+"/"+idToGet);
+    return this.http.get<User[]>(this.urlUser+"/"+idToGet);
   }
   getallUser():Observable<User[]>{
-    return this.http.get<User[]>(this.urlGetUser);
+    return this.http.get<User[]>(this.urlUser);
   }
-
+  createUser(userData: any): Observable<any> {
+    return this.http.post(this.urlUser, userData);
+  }
 
   constructor(private http:HttpClient) { }
 
