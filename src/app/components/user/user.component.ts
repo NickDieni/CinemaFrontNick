@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../service/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostalCode } from '../../models/postalcode';
 import { PostalcodeService } from '../../service/postalcode.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
@@ -26,26 +28,28 @@ export class UserComponent {
 
   // HTML Forms -- Reactive Forms
   userForm: FormGroup = new FormGroup({
-    UserName: new FormControl(),
-    Password: new FormControl(),
-    Email: new FormControl(),
-    PostalCodes: new FormControl(),
+    UserName: new FormControl('', [Validators.required]),
+    Password: new FormControl('', [Validators.required]),
+    Email: new FormControl('', [Validators.required]),
+    PostalCodes: new FormControl('', [Validators.required]),
   });
 
   onSubmit(): void {
+    console.log(this.userForm);
+    console.log(this.userForm.valid);
+    console.log(this.userForm.controls);
+    debugger;
     if (this.userForm.valid){
       const formData = this.userForm.value;
-      this.service.createUser(formData).subscribe({
-        next: () => {
-          alert("User created successfully!");
-        },
-        error: () =>{
-          alert("User creation failed!");
-        },
-      });
-    } else {
-      alert ("Please Fill out the form or else...")
-    }
+      this.service.createUser(formData);
+      console.log("Success to Create User", formData);
+      this.userList.push(formData);
+      this.userForm.reset();
+      
+    } //else {
+      //alert ("Please Fill out the form or else...");
+    //}
+  
   }
   JuleNisse(idToDeleteAgain:number): void {
     console.log("Deleting");
@@ -55,7 +59,9 @@ export class UserComponent {
   // GetAllUsers - returnerer alle User objekter
   getall(): User[] {
     return this.userList;
+    
   }
+
 
   deleteUserById(UserID: number) {
     this.service.delete(UserID);

@@ -14,13 +14,12 @@ export class PostalcodeComponent {
   ngOnInit(){
     this.service.getallPostalCodes().subscribe(
     data=>{
-      console.log("Success To Get PostalCodes");
+      console.log("Success To Get PostalCodes", data);
   
       this.postalList=data;
-      console.log(this.postalList);
     }
     )
-  
+    return this.postalList;
   }
   constructor(private service:PostalcodeService){}
 

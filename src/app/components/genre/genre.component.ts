@@ -15,13 +15,12 @@ export class GenreComponent {
   ngOnInit(){
     this.service.getallGenres().subscribe(
     data=>{
-      console.log("Success To Get Genres");
+      console.log("Success To Get Genres", data);
   
       this.genreList=data;
-      console.log(this.genreList);
     }
     )
-  
+    return this.genreList;
   }
   constructor(private service:GenreService){}
 }

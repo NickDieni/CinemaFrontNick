@@ -9,10 +9,10 @@
 
 
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label for="Uname">User name:</label><br />
+  <label for="Username">User name:</label><br />
   <input type="text" name="username" id="username" formControlName="UserName" /><br />
 
-  <label for="Pass">Password:</label><br />
+  <label for="Password">Password:</label><br />
   <input type="text" name="password" id="password" formControlName="Password" /><br />
 
   <label for="Email">Email:</label><br />
@@ -22,9 +22,9 @@
   <select name="postalcodeid" id="postalcodeid">
     <option value="">--Please choose an option--</option>
 
-    @for (postalcode of this.postalList; track $index) {
-    <option [value]="$index">{{ postalcode.postalCodeId }}</option>
-    }
+    <ng-container *ngFor="let postalcode of postalList; let i = index">
+      <option [value]="i">{{ postalcode.postalCodeId }}</option>
+    </ng-container>
   </select><br />
   <button type="submit">TRYK MIG</button>
 </form>
@@ -47,7 +47,7 @@
       <td>{{ user.userName }}</td>
       <td>{{ user.password }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.postalCodes }}</td>
+      <td>{{ user.postalCodeId }}</td>
       <button (click)="deleteUserById(user.userId)">SLET</button>
     </tr>
     }

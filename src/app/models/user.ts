@@ -3,5 +3,5 @@ export class User {
     userName : string="";
     password : string="";
     email : string="";
-    postalCodes : number= 0;
+    postalCodeId : number= 0;
 }
