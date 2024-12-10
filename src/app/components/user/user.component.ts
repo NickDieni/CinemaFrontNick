@@ -31,36 +31,37 @@ export class UserComponent {
     UserName: new FormControl('', [Validators.required]),
     Password: new FormControl('', [Validators.required]),
     Email: new FormControl('', [Validators.required]),
-    PostalCodes: new FormControl('', [Validators.required]),
+    PostalCodeId: new FormControl('', [Validators.required]),
   });
 
   onSubmit(): void {
     console.log(this.userForm);
     console.log(this.userForm.valid);
     console.log(this.userForm.controls);
-    debugger;
+    
     if (this.userForm.valid){
       const formData = this.userForm.value;
-      this.service.createUser(formData);
+      this.service.createUser(formData).subscribe(
+        response => {
+          console.log("Success to Create User", response);
+          this.userList.push(response);
+          this.userForm.reset();
+        },
+        error => {
+          console.log('Failed to Create User', error);
+        }
+      );
       console.log("Success to Create User", formData);
       this.userList.push(formData);
       this.userForm.reset();
       
-    } //else {
-      //alert ("Please Fill out the form or else...");
-    //}
+    } else {
+      alert ("Please Fill out the form or else...");
+    }
   
   }
-  JuleNisse(idToDeleteAgain:number): void {
-    console.log("Deleting");
-    console.log(idToDeleteAgain);
-  }
 
-  // GetAllUsers - returnerer alle User objekter
-  getall(): User[] {
-    return this.userList;
-    
-  }
+
 
 
   deleteUserById(UserID: number) {
@@ -87,12 +88,12 @@ export class UserComponent {
       this.postalList = data1;
     });
 
-    this.userForm = new FormGroup({
-      UserName: new FormControl('', [Validators.required]),
-      Password: new FormControl('', [Validators.required]),
-      Email: new FormControl('', [Validators.required]),
-      PostalCodeId: new FormControl('', [Validators.required]),
-    });
+    //this.userForm = new FormGroup({
+    //  UserName: new FormControl('', [Validators.required]),
+    //  Password: new FormControl('', [Validators.required]),
+    //  Email: new FormControl('', [Validators.required]),
+    //  PostalCodeId: new FormControl('', [Validators.required]),
+    //});
 
     return this.userList, this.postalList;
   }

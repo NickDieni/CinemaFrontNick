@@ -36,8 +36,8 @@ export class UserService {
   getallUser():Observable<User[]>{
     return this.http.get<User[]>(this.urlUser);
   }
-  createUser(userData: any): void {
-   this.http.post(this.urlUser, userData);
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.urlUser, user);
   }
 
   constructor(private http:HttpClient) { }

@@ -18,15 +18,14 @@
   <label for="Email">Email:</label><br />
   <input type="text" name="email" id="email" formControlName="Email" /><br />
 
-  <label for="PostalCodes">PostalCodes</label><br />
-  <select name="postalcodeid" id="postalcodeid">
+  <label for="postalcodeid">PostalCodes</label><br />
+  <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
     <option value="">--Please choose an option--</option>
-
     <ng-container *ngFor="let postalcode of postalList; let i = index">
-      <option [value]="i">{{ postalcode.postalCodeId }}</option>
+      <option [value]="postalcode.postalCodeId">{{ postalcode.postalCodeId }}</option>
     </ng-container>
   </select><br />
-  <button type="submit">TRYK MIG</button>
+  <button type="submit" value="SubmitS">Create User</button>
 </form>
 
 
