@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { PostalcodeService } from '../../service/postalcode.service';
 import { Genre } from '../../models/genre';
 import { GenreService } from '../../service/genre.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-genre',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './genre.component.html',
   styleUrl: './genre.component.css'
 })
