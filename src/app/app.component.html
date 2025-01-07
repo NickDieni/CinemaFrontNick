@@ -16,7 +16,16 @@ her er der noget tekst
 Her kan vi kalde vores nye components !! -->
 <!--<app-crud></app-crud>-->
 
-<app-user></app-user>
-<app-genre></app-genre>
-<app-postalcode></app-postalcode>
+<div class="header-bar">
+    <nav>
+        <ul>
+            <li><span [routerLink]="'/frontpage'" routerLinkActive="active">Front Page</span></li>
+            <li><span [routerLink]="'/login'" routerLinkActive="active">Login Page</span></li>
+        </ul>
+    </nav>
+</div>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
+
+
 <!--<app-test-component></app-test-component>-->

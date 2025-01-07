@@ -1,21 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CrudComponent } from "./components/crud/crud.component";
 import { UserComponent } from "./components/user/user.component";
 import { PostalcodeComponent } from "./components/postalcode/postalcode.component";
 import { GenreComponent } from "./components/genre/genre.component";
-import { TestComponentComponent } from "./components/test-component/test-component.component";
+import { CommonModule } from '@angular/common';
 
 //Decorator to define the component
 @Component({
   selector: 'app-root', //How you get access your class
-  imports: [RouterOutlet, CrudComponent, UserComponent, PostalcodeComponent, GenreComponent, TestComponentComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './app.component.html', //Your html page
   styleUrl: './app.component.css' //Defines if it should be styled
 })
 
+//export class AppComponent {
+  //constructor(private router: Router) { }
+
+  //navigateToFrontpage() {
+    //this.router.navigate(['/frontpage']);
+  //}
+  //navigateToLogin() {
+    //this.router.navigate(['/login']);
+  //}
+//}
 
 export class AppComponent {
+  
   title = 'CinemaFrontNick';
   //Variables
   //int x = 10; C#
