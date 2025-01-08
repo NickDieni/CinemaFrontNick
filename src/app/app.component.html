@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./app.component.css">
+
 <!--hej med jer
 
 her er der noget tekst
@@ -16,6 +18,7 @@ her er der noget tekst
 Her kan vi kalde vores nye components !! -->
 <!--<app-crud></app-crud>-->
 
+
 <div class="header-bar">
     <nav>
         <ul>
@@ -25,7 +28,12 @@ Her kan vi kalde vores nye components !! -->
     </nav>
 </div>
 <!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<div class="header-spacer"></div>
+
+<main>
+    <router-outlet></router-outlet>
+</main>    
+
 
 
 <!--<app-test-component></app-test-component>-->
