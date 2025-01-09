@@ -1,54 +1,58 @@
-<p>user works!</p>
+<div class="looks">
+  <div>
+    <p>user works!</p>
 
-<label for="input name">User Id: </label><br />
-<input type="text" #UserId />
-<button (click)="deleteUserById(+UserId.value)">Delete with Id</button>
-<button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
+    <label for="input name">User Id: </label><br />
+    <input type="text" #UserId /><br> 
+    <button (click)="deleteUserById(+UserId.value)">Delete with Id</button>
+    <button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
 
-<br /><br />
-
-
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label for="Username">User name:</label><br />
-  <input type="text" name="username" id="username" formControlName="UserName" /><br />
-
-  <label for="Password">Password:</label><br />
-  <input type="text" name="password" id="password" formControlName="Password" /><br />
-
-  <label for="Email">Email:</label><br />
-  <input type="text" name="email" id="email" formControlName="Email" /><br />
-
-  <label for="postalcodeid">PostalCodes</label><br />
-  <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
-    <option value="">--Please choose an option--</option>
-    <ng-container *ngFor="let postalcode of postalList; let i = index">
-      <option [value]="postalcode.postalCodeId">{{ postalcode.postalCodeId }}</option>
-    </ng-container>
-  </select><br />
-  <button type="submit" value="SubmitS">Create User</button>
-</form>
+    <br /><br />
 
 
-<table>
-  <thead>
-    <tr>
-      <th><label for="UserId">Id</label></th>
-      <th><label for="Username">User Name</label></th>
-      <th><label for="Password">Password</label></th>
-      <th><label for="Email">Email</label></th>
-      <th><label for="PostalCodes">PostalCodes</label></th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (user of userList; track $index){
-    <tr>
-      <td>{{ user.userId }}</td>
-      <td>{{ user.userName }}</td>
-      <td>{{ user.password }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.postalCodeId }}</td>
-      <button (click)="deleteUserById(user.userId)">SLET</button>
-    </tr>
-    }
-  </tbody>
-</table>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <label for="Username">User name:</label><br />
+      <input type="text" name="username" id="username" formControlName="UserName" /><br />
+
+      <label for="Password">Password:</label><br />
+      <input type="text" name="password" id="password" formControlName="Password" /><br />
+
+      <label for="Email">Email:</label><br />
+      <input type="text" name="email" id="email" formControlName="Email" /><br />
+
+      <label for="postalcodeid">PostalCodes</label><br />
+      <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
+        <option value="">--Please choose an option--</option>
+        <ng-container *ngFor="let postalcode of postalList; let i = index">
+          <option [value]="postalcode.postalCodeId">{{ postalcode.postalCodeId }}</option>
+        </ng-container>
+      </select><br />
+      <button type="submit" value="SubmitS">Create User</button>
+    </form>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th><label for="UserId">Id</label></th>
+          <th><label for="Username">User Name</label></th>
+          <th><label for="Password">Password</label></th>
+          <th><label for="Email">Email</label></th>
+          <th><label for="PostalCodes">PostalCodes</label></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of userList; track $index){
+        <tr>
+          <td>{{ user.userId }}</td>
+          <td>{{ user.userName }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.postalCodeId }}</td>
+          <button (click)="deleteUserById(user.userId)">SLET</button>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

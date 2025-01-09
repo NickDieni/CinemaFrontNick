@@ -22,7 +22,7 @@ export class GenericService<T> {
     genericDelete(idToDelete:number, endPoint:string):Observable<T>{
       return this.http.delete<T>(this.urlTest+"/"+endPoint+"/"+idToDelete);
     }
-    getUserById(idToGet:number, endPoint:string):Observable<T>{
+    genericGetById(idToGet:number, endPoint:string):Observable<T>{
       return this.http.get<T>(this.urlTest+"/"+endPoint+"/"+idToGet);
     }
     

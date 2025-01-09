@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f86969; /* Dark background */
+    background-color: #f86969;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
     display: flex;
@@ -42,7 +42,10 @@
   .header-bar nav ul li span:hover {
     color: #666666; /* Hover effect */
   }
-
+  .header-spacer {
+    height: 0px; /* Same as header height */
+    width: 100%;
+  }
 
 
   /* Offset for Fixed Header */
@@ -68,14 +71,14 @@
     }
   }
 
-  .header-spacer {
-    height: 0px; /* Same as header height */
-    width: 100%;
-  }
+
 
   :host {
     display: block; /* Ensure the component takes up space */
-    background-color: #fb8282; /* Replace with your desired color */
+    
+    background-image: url('../assets/CinemaBackGround.png');
+    background-size: cover; /* Søger for at billedet dækker hele baggrunden */
+    background-position: center; /* Centering af billed */
     height: 100vh; /* Make it fill the entire viewport height */
     width: 100%; /* Make it fill the entire viewport width */
     margin: 0; /* Remove any default margins */
@@ -83,4 +86,5 @@
     top: 0;
     left: 0;
     width: 100%;
+    
   }

@@ -1,1 +1,36 @@
-<p>postalcode works!</p>
+<div class="looks">
+    <div>
+        <h1>Postal Code</h1><br>
+        <p>postalcode works!</p><br>
+
+        <label for="input postalcode">PostalCode Id: </label><br />
+        <input type="text" #PostalCodeId /><br> 
+        <button (click)="deletePostalCode(+PostalCodeId.value)">Delete with Id</button>
+        <button (click)="GetPostalbyid(+PostalCodeId.value)">Get with Id</button><br />
+        <div>
+            <table>
+                <thead>
+                  <tr>
+                    <th><label for="postalCodeId">Postal Code Number</label></th>
+                    <th><label for="postalName">Postal Code Name</label></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (postalcode of postalList; track $index){
+                  <tr>
+                    <td>{{ postalcode.postalCodeId}}</td>
+                    <td>{{ postalcode.postalName}}</td>
+                    <!--<button (click)="GetPostalbyid(postalcode.postalCodeId)">SLET</button>-->
+                  </tr>
+                  }
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+</div>
+<div>
+    
+</div>
+
