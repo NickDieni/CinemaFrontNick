@@ -12,6 +12,7 @@ import { GenericService } from '../../service/generic.service';
 export class PostalcodeComponent {
   postalList: PostalCode[] = [];
   ComponentNameValue: string = "PostalCodes";
+  
 
   GetPostalbyid(PostalId: number){
     this.service.genericGetById(PostalId, this.ComponentNameValue).subscribe((data) => {
@@ -29,7 +30,7 @@ export class PostalcodeComponent {
   ngOnInit(){
     this.service.genericGetAll('PostalCodes').subscribe(data => {
       console.log("Success To Get PostalCodes", data); 
-      this.postalList = data;
+      this.postalList = Array.isArray(data) ? data : [data];
     });
   }
 

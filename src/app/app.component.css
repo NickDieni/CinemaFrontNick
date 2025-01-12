@@ -1,90 +1,105 @@
 /* Header Bar Styling */
 .header-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f86969;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Navigation Links */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f86969;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  /* Ensure it stays above other elements */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Links */
+.header-bar nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header-bar nav ul li {
+  margin-right: 20px;
+}
+
+.header-bar nav ul li span {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.header-bar nav ul li span.router-link-active {
+  color: #666666;
+  /* Highlight active route */
+}
+
+.header-bar nav ul li span:hover {
+  color: #666666;
+  /* Hover effect */
+}
+
+.header-spacer {
+  height: 0px;
+  /* Same as header height */
+  width: 100%;
+}
+
+
+/* Offset for Fixed Header */
+body {
+  padding-top: 60px;
+  /* Adjust based on header height */
+  margin: 0;
+  /* Remove any default browser margin */
+  padding: 0;
+}
+
+main {
+  padding-top: 60px;
+  /* Match the height of the header */
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
   .header-bar nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
   .header-bar nav ul li {
-    margin-right: 20px;
+    margin-right: 0;
+    margin-bottom: 10px;
   }
-  
-  .header-bar nav ul li span {
-    cursor: pointer;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .header-bar nav ul li span.router-link-active {
-    color: #666666; /* Highlight active route */
-  }
-  
-  .header-bar nav ul li span:hover {
-    color: #666666; /* Hover effect */
-  }
-  .header-spacer {
-    height: 0px; /* Same as header height */
-    width: 100%;
-  }
-
-
-  /* Offset for Fixed Header */
-  body {
-    padding-top: 60px; /* Adjust based on header height */
-    margin: 0; /* Remove any default browser margin */
-    padding: 0;
-  }
-  
-  main {
-    padding-top: 60px; /* Match the height of the header */
-    box-sizing: border-box;
-  }
-
-  @media (max-width: 600px) {
-    .header-bar nav ul {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .header-bar nav ul li {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  }
+}
 
 
 
-  :host {
-    display: block; /* Ensure the component takes up space */
-    
-    background-image: url('../assets/CinemaBackGround.png');
-    background-size: cover; /* Søger for at billedet dækker hele baggrunden */
-    background-position: center; /* Centering af billed */
-    height: 100vh; /* Make it fill the entire viewport height */
-    width: 100%; /* Make it fill the entire viewport width */
-    margin: 0; /* Remove any default margins */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-  }
+:host {
+  display: block;
+  /* Ensure the component takes up space */
+
+  background-image: url('../assets/CinemaBackGround.png');
+  background-size: cover;
+  /* Søger for at billedet dækker hele baggrunden */
+  background-position: center;
+  /* Centering af billed */
+  height: 100vh;
+  /* Make it fill the entire viewport height */
+  width: 100%;
+  /* Make it fill the entire viewport width */
+  margin: 0;
+  /* Remove any default margins */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+}
