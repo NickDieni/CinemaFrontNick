@@ -8,26 +8,38 @@
     <button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
 
     <br /><br />
-
+    <!-- @if (this.postalList.length > 0) {
+      Hej postalList er data {{postalList[0].postalCodeId}}
+    }
+    @for(postalcode of this.postalList; track $index){
+    <div>{{postalcode.postalCodeId || 'unknown'}} - {{postalcode.postalName || 'unknown'}}</div>
+    } -->
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <label for="Username">User name:</label><br />
       <input type="text" name="username" id="username" formControlName="UserName" /><br />
-
+.
       <label for="Password">Password:</label><br />
       <input type="text" name="password" id="password" formControlName="Password" /><br />
 
       <label for="Email">Email:</label><br />
       <input type="text" name="email" id="email" formControlName="Email" /><br />
 
-      <label for="postalcodeid">PostalCodes</label><br />
+      <label for="postalcodeid">Postal codes</label><br />
+      @if(this.postalList.length > 0) {
+        <div>postalList er data {{postalList[0]}}</div>
+      } @else {
+        <div>Postallist har tom..</div>
+      }
       <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
         <option value="">--Please choose an option--</option>
-        <ng-container *ngFor="let postalcode of postalList; let i = index">
-          <option [value]="postalcode.postalCodeId">{{ postalcode.postalCodeId }}</option>
-        </ng-container>
+        @for (postalcode of postalList; track postalcode.postalCodeId) {
+          <option [value]="postalcode.postalCodeId">
+        {{ postalcode.postalName || 'unknown'}}
+          </option>
+        }
       </select><br />
-      <button type="submit" value="SubmitS">Create User</button>
+      <button type="submit" value="Submit">Create User</button>
     </form>
 
 

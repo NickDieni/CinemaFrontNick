@@ -22,9 +22,14 @@ export class PostalcodeComponent {
   }
 
   deletePostalCode(PostalCodeId: number) {
-    this.service.genericDelete(PostalCodeId, this.ComponentNameValue)
+    console.log("Deleting ", PostalCodeId);
+    this.service.genericDelete(PostalCodeId, this.ComponentNameValue).subscribe((data) => {
+      
+      console.log("Success to Delete ", this.ComponentNameValue, " By Id", data);
+    });
 
-    this.postalList = this.postalList.filter((postalcode) => postalcode.postalCodeId !== PostalCodeId);
+    this.postalList = [];
+    console.log(this.postalList);
   }
 
   ngOnInit(){
