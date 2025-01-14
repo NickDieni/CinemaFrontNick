@@ -1,6 +1,5 @@
 <div class="looks">
   <div>
-    <p>user works!</p>
 
     <label for="input name">User Id: </label><br />
     <input type="text" #UserId /><br> 
@@ -18,7 +17,7 @@
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <label for="Username">User name:</label><br />
       <input type="text" name="username" id="username" formControlName="UserName" /><br />
-.
+
       <label for="Password">Password:</label><br />
       <input type="text" name="password" id="password" formControlName="Password" /><br />
 
@@ -35,7 +34,7 @@
         }
       </select><br />
       <button type="submit" value="Submit">Create User</button>
-    </form>
+    </form><br/>
 
 
     <table>

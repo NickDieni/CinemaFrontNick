@@ -25,6 +25,8 @@ export class GenericService<T> {
     genericGetById(idToGet:number, endPoint:string):Observable<T>{
       return this.http.get<T>(this.urlTest+"/"+endPoint+"/"+idToGet);
     }
-    
+    genericCreate(model: T, endPoint:string):Observable<T>{
+      return this.http.post<T>(this.urlTest+"/"+endPoint, model);
+    }
     constructor(private http:HttpClient) { }
   }
