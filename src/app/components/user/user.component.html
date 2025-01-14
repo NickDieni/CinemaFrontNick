@@ -26,11 +26,6 @@
       <input type="text" name="email" id="email" formControlName="Email" /><br />
 
       <label for="postalcodeid">Postal codes</label><br />
-      @if(this.postalList.length > 0) {
-        <div>postalList er data {{postalList[0]}}</div>
-      } @else {
-        <div>Postallist har tom..</div>
-      }
       <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
         <option value="">--Please choose an option--</option>
         @for (postalcode of postalList; track postalcode.postalCodeId) {
