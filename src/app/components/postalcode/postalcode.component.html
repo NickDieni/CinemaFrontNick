@@ -1,45 +1,44 @@
 <div class="looks">
+  <div>
+    <h1>Postal Code</h1><br>
+
+    <label for="input postalcode">PostalCode Id: </label><br />
+    <input type="text" #PostalCodeId /><br>
+    <button (click)="deletePostalCode(+PostalCodeId.value)">Delete with Id</button>
+    <button (click)="GetPostalbyid(+PostalCodeId.value)">Get with Id</button><br />
+
+    <form [formGroup]="postalForm" (ngSubmit)="onSubmit()">
+      <label for="PostalCode">Postal Code:</label><br />
+      <input type="text" name="postalcode" id="postalcode" formControlName="postalCodeId" /><br />
+
+      <label for="postalCodeName">City Name:</label><br />
+      <input type="text" name="postalcodename" id="postalcodename" formControlName="postalName" /><br />
+      <button type="submit" value="Submit">Create User</button>
+    </form><br />
+
     <div>
-        <h1>Postal Code</h1><br>
-
-        <label for="input postalcode">PostalCode Id: </label><br />
-        <input type="text" #PostalCodeId /><br> 
-        <button (click)="deletePostalCode(+PostalCodeId.value)">Delete with Id</button>
-        <button (click)="GetPostalbyid(+PostalCodeId.value)">Get with Id</button><br />
-
-        <form [formGroup]="postalForm" (ngSubmit)="onSubmit()">
-          <label for="PostalCode">Postal Code:</label><br />
-          <input type="text" name="postalcode" id="postalcode" formControlName="PostalCodeId" /><br />
-    
-          <label for="postalCodeName">City Name:</label><br />
-          <input type="text" name="postalcodename" id="postalcodename" formControlName="postalCodeName" /><br />
-          <button type="submit" value="Submit">Create User</button>
-        </form><br/>
-
-        <div>
-            <table>
-                <thead>
-                  <tr>
-                    <th><label for="postalCodeId">Postal Code Number</label></th>
-                    <th><label for="postalName">Postal Code Name</label></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (postalcode of postalList; track $index){
-                  <tr>
-                    <td>{{ postalcode.postalCodeId}}</td>
-                    <td>{{ postalcode.postalName}}</td>
-                    <button (click)="deletePostalCode(postalcode.postalCodeId)">SLET</button>
-                  </tr>
-                  }
-                </tbody>
-              </table>
-        </div>
+      <table>
+        <thead>
+          <tr>
+            <th><label for="postalCodeId">Postal Code Number</label></th>
+            <th><label for="postalName">Postal Code Name</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (postalcode of postalList; track $index){
+          <tr>
+            <td>{{ postalcode.postalCodeId}}</td>
+            <td>{{ postalcode.postalName}}</td>
+            <button (click)="deletePostalCode(postalcode.postalCodeId)">SLET</button>
+          </tr>
+          }
+        </tbody>
+      </table>
     </div>
+  </div>
 
 
 </div>
 <div>
-    
-</div>
 
+</div>

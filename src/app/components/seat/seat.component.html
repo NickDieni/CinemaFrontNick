@@ -1,0 +1,37 @@
+<div class="looks">
+    <h2>Seat Management</h2>
+    <div>
+      <label>
+        Theater ID:
+        <input type="number" #theaterIdInput />
+      </label>
+      <label>
+        Rows:
+        <input type="number" #rowsInput />
+      </label>
+      <label>
+        Seats per Row:
+        <input type="number" #seatsPerRowInput />
+      </label>
+    </div>
+  
+    <div class="seats">
+      <button (click)="generateSeats(theaterIdInput.value, rowsInput.value, seatsPerRowInput.value)">
+        Generate Seats
+      </button>
+      <button (click)="saveSeats()">Save Seats to Database</button>
+    </div>
+  
+    <div class="seat-preview">
+        <h3>Generated Seats</h3>
+        <div class="seats">
+          <ng-container *ngFor="let seat of seats; let i = index">
+            <button class="seat">
+              Row {{ seat.rowNumber }} - Seat {{ seat.seatNumber }}
+            </button>
+            <br *ngIf="(i + 1) % 10 === 0">
+          </ng-container>
+        </div>
+      </div>
+  </div>
+  

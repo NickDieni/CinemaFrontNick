@@ -15,8 +15,8 @@ export class PostalcodeComponent {
   ComponentNameValue: string = 'PostalCodes';
 
   postalForm: FormGroup = new FormGroup({
-    PostalCodeId: new FormControl('', [Validators.required]),
-    postalCodeName: new FormControl('', [Validators.required]),
+    postalCodeId: new FormControl(0, [Validators.required]),
+    postalName: new FormControl('', [Validators.required]),
   });
 
   GetPostalbyid(PostalId: number) {
@@ -34,7 +34,7 @@ export class PostalcodeComponent {
         console.log(
           'Success to Delete ',
           this.ComponentNameValue,
-          ' By Id',
+          ' By Id ',
           data
         );
       });
@@ -51,12 +51,12 @@ export class PostalcodeComponent {
       const formData = this.postalForm.value;
       this.service.genericCreate(formData, this.ComponentNameValue).subscribe(
         (response) => {
-          console.log('Success to Create User', response);
+          console.log('Success to Create Postalcode', response);
           this.postalList.push(response);
           this.postalForm.reset();
         },
         (error) => {
-          console.log('Failed to Create User', error);
+          console.log('Failed to Create Postalcode', error);
         }
       );
     } else {

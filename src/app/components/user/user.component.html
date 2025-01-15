@@ -1,18 +1,13 @@
 <div class="looks">
   <div>
+    <h1>User Page</h1><br>
 
     <label for="input name">User Id: </label><br />
-    <input type="text" #UserId /><br> 
+    <input type="text" #UserId /><br>
     <button (click)="deleteUserById(+UserId.value)">Delete with Id</button>
     <button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
 
     <br /><br />
-    <!-- @if (this.postalList.length > 0) {
-      Hej postalList er data {{postalList[0].postalCodeId}}
-    }
-    @for(postalcode of this.postalList; track $index){
-    <div>{{postalcode.postalCodeId || 'unknown'}} - {{postalcode.postalName || 'unknown'}}</div>
-    } -->
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <label for="Username">User name:</label><br />
@@ -28,13 +23,13 @@
       <select name="postalcodeid" id="postalcodeid" formControlName="PostalCodeId">
         <option value="">--Please choose an option--</option>
         @for (postalcode of postalList; track postalcode.postalCodeId) {
-          <option [value]="postalcode.postalCodeId">
-        {{ postalcode.postalName || 'unknown'}}
-          </option>
+        <option [value]="postalcode.postalCodeId">
+          {{ postalcode.postalName || 'unknown'}}
+        </option>
         }
       </select><br />
       <button type="submit" value="Submit">Create User</button>
-    </form><br/>
+    </form><br />
 
 
     <table>
