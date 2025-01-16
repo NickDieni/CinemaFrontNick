@@ -2,14 +2,18 @@
   <div>
     <h1>User Page</h1><br>
 
-    <label for="input name">User Id: </label><br />
+
+    <label for="input name">Find A User With Id: </label><br />
     <input type="text" #UserId /><br>
-    <button (click)="deleteUserById(+UserId.value)">Delete with Id</button>
-    <button (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
+    <button class="button" (click)="deleteUserById(+UserId.value)">Delete with Id</button>
+    <button class="button" (click)="getUserWithId(+UserId.value)">Get with Id</button><br />
 
     <br /><br />
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <label for="UserId">User Id:</label><br />
+      <input type="text" name="userid" id="userid" formControlName="UserId" /><br />
+
       <label for="Username">User name:</label><br />
       <input type="text" name="username" id="username" formControlName="UserName" /><br />
 
@@ -28,7 +32,7 @@
         </option>
         }
       </select><br />
-      <button type="submit" value="Submit">Create User</button>
+      <button class="button" type="submit" value="Submit">Create User / Update User If User Id is filled</button>
     </form><br />
 
 

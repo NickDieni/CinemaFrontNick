@@ -36,11 +36,14 @@ export class UserComponent {
 
   // HTML Forms -- Reactive Forms
   userForm: FormGroup = new FormGroup({
+    UserId: new FormControl(''),
     UserName: new FormControl('', [Validators.required]),
     Password: new FormControl('', [Validators.required]),
     Email: new FormControl('', [Validators.required]),
     PostalCodeId: new FormControl('', [Validators.required]),
   });
+
+
 
   onSubmit(): void {
     console.log(this.userForm);
@@ -49,16 +52,36 @@ export class UserComponent {
 
     if (this.userForm.valid) {
       const formData = this.userForm.value;
-      this.service.createUser(formData).subscribe(
-        (response) => {
-          console.log('Success to Create User', response);
-          this.userList.push(response);
-          this.userForm.reset();
-        },
-        (error) => {
-          console.log('Failed to Create User', error);
-        }
-      );
+      
+      if (formData.UserId) {
+        // Update existing user
+        this.service2.genericUpdate(formData, this.ComponentNameValueUser, formData.UserId).subscribe(
+          (response) => {
+            console.log('Success to Update User', response);
+            const index = this.userList.findIndex(user => user.userId === formData.UserId);
+            if (index !== -1) {
+              this.userList[index] = response;
+            }
+            this.userForm.reset();
+            formData.UserId = null;
+          },
+          (error) => {
+            console.log('Failed to Update User', error);
+          }
+        );
+      } else {
+        // Create new user
+        this.service.createUser(formData).subscribe(
+          (response) => {
+            console.log('Success to Create User', response);
+            this.userList.push(response);
+            this.userForm.reset();
+          },
+          (error) => {
+            console.log('Failed to Create User', error);
+          }
+        );
+      }
     } else {
       alert('Please Fill out the form or else...');
     }
@@ -81,13 +104,16 @@ export class UserComponent {
       return (this.userList = [data]);
     });
   }
-  
-
-  ngOnInit() {
+  getAllUsers() {
     this.service.getallUser().subscribe((data) => {
       console.log('Success To Get All Users', data);
       this.userList = Array.isArray(data) ? data : [data];
     });
+  }
+
+  ngOnInit() {
+
+    this.getAllUsers();
 
     this.service1.getallPostalCodes().subscribe((data1) => {
       console.log('Success To Get PostalCodes In Users', data1);

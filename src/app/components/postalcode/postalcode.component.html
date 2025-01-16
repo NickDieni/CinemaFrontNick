@@ -4,8 +4,8 @@
 
     <label for="input postalcode">PostalCode Id: </label><br />
     <input type="text" #PostalCodeId /><br>
-    <button (click)="deletePostalCode(+PostalCodeId.value)">Delete with Id</button>
-    <button (click)="GetPostalbyid(+PostalCodeId.value)">Get with Id</button><br />
+    <button class="button" (click)="deletePostalCode(+PostalCodeId.value)">Delete with Id</button>
+    <button class="button" (click)="GetPostalbyid(+PostalCodeId.value)">Get with Id</button><br />
 
     <form [formGroup]="postalForm" (ngSubmit)="onSubmit()">
       <label for="PostalCode">Postal Code:</label><br />
@@ -13,7 +13,7 @@
 
       <label for="postalCodeName">City Name:</label><br />
       <input type="text" name="postalcodename" id="postalcodename" formControlName="postalName" /><br />
-      <button type="submit" value="Submit">Create User</button>
+      <button class="button"type="submit" value="Submit">Create User</button>
     </form><br />
 
     <div>
@@ -29,7 +29,7 @@
           <tr>
             <td>{{ postalcode.postalCodeId}}</td>
             <td>{{ postalcode.postalName}}</td>
-            <button (click)="deletePostalCode(postalcode.postalCodeId)">SLET</button>
+            <button class="button" (click)="deletePostalCode(postalcode.postalCodeId)">SLET</button>
           </tr>
           }
         </tbody>

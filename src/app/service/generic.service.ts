@@ -28,5 +28,8 @@ export class GenericService<T> {
     genericCreate(model: T, endPoint:string):Observable<T>{
       return this.http.post<T>(this.urlTest+"/"+endPoint, model);
     }
+    genericUpdate(model: T, endPoint: string, id: number): Observable<T> {
+      return this.http.put<T>(this.urlTest + "/" + endPoint + "/" + id, model);
+    }
     constructor(private http:HttpClient) { }
   }

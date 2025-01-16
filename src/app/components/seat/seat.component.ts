@@ -40,7 +40,7 @@ export class SeatComponent {
 
   // Method to save seats via API
   saveSeats() {
-    const endpoint = 'seats'; // Example API endpoint
+    const endpoint = 'Seat'; // Example API endpoint
     this.seats.forEach((seat) => {
       const seatDto = {
         theaterId: seat.theaterId,

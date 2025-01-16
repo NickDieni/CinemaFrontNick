@@ -2,5 +2,25 @@
     <div>
         <h1>TEC's Theater</h1><br>
         <h3>Coming movies</h3><br>
+        <div>
+            <table>
+              <thead>
+                <tr>
+                  <th><label for="title">Movie Title</label></th>
+                  <th><label for="rating">Movie Rating</label></th>
+                  <th><label for="releaseDate">Release Date</label></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (movies of movieList; track $index){
+                <tr>
+                  <td>{{ movies.title }}</td>
+                  <td>{{ movies.rating }}</td>
+                  <td>{{ movies.releaseDate }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
     </div>
 <div>
