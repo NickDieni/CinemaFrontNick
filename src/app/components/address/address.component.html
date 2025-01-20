@@ -2,18 +2,32 @@
     <div>
         <h1>Address Page</h1>
 
-        <!-- <label for="input Address">Address Id: </label><br />
+        <label for="input Address">Address Id: </label><br />
         <input type="text" #AddressId /><br>
         <button (click)="deleteAddress(+AddressId.value)">Delete with Id</button>
-        <button (click)="GetAddressbyid(+AddressId.value)">Get with Id</button><br />
+        <button (click)="getAddressWithIdGeneric(+AddressId.value)">Get with Id</button><br />
     
         <form [formGroup]="AddressForm" (ngSubmit)="onSubmit()">
-          <label for="Address">Postal Code:</label><br />
-          <input type="text" name="address" id="address" formControlName="AddressId" /><br />
+          <label for="Street">Street Name:</label><br />
+          <input type="text" name="street" id="street" formControlName="street" /><br />
     
-          <label for="postalCodeName">City Name:</label><br />
-          <input type="text" name="postalcodename" id="postalcodename" formControlName="postalName" /><br />
-          <button type="submit" value="Submit">Create User</button>
+          <label for="streetNumber">Street Number:</label><br />
+          <input type="text" name="streetnumber" id="streetnumber" formControlName="streetNumber" /><br />
+
+          <label for="Building">Building:</label><br />
+          <input type="text" name="building" id="building" formControlName="building" /><br />
+
+          <label for="Floor">Floor:</label><br />
+          <input type="text" name="floor" id="floor" formControlName="floor" /><br />
+
+          <label for="direction">direction:</label><br />
+          <input type="text" name="streetnumber" id="streetnumber" formControlName="direction" /><br />
+
+          <label for="postalCodeId">Postal Code:</label><br />
+          <input type="text" name="postalCodeId" id="postalCodeId" formControlName="postalCodeId" /><br />
+
+
+          <button type="submit" value="Submit">Create Address</button>
         </form><br />
     
         <div>
@@ -44,6 +58,6 @@
               }
             </tbody>
           </table>
-        </div> -->
+        </div>
     </div>
 </div>

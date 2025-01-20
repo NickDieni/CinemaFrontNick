@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Address } from '../../models/address';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GenericService } from '../../service/generic.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-address',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './address.component.html',
   styleUrl: './address.component.css'
 })
@@ -32,18 +33,32 @@ export class AddressComponent {
       const formData = this.AddressForm.value;
       this.service.genericCreate(formData, this.ComponentNameValue).subscribe(
         (response) => {
-          console.log('Success to Create Postalcode', response);
+          console.log('Success to Create Address', response);
           this.addressList.push(response);
           this.AddressForm.reset();
         },
         (error) => {
-          console.log('Failed to Create Postalcode', error);
+          console.log('Failed to Create Address', error);
         }
       );
     } else {
       alert('Please Fill out the form or else...');
     }
   }
+
+  deleteAddress(AddressId: number) {
+    this.service.genericDelete(AddressId, this.ComponentNameValue);
+
+    this.addressList = this.addressList.filter((address) => address.addressId !== AddressId);
+  }
+  getAddressWithIdGeneric(AddressId: number) {
+    this.service.genericGetById(AddressId, this.ComponentNameValue).subscribe((data) => {
+      console.log('Success To Get ', this.ComponentNameValue, ' By Id', data);
+      this.addressList = Array.isArray(data) ? data : [data];
+    });
+  }
+
+
   constructor(
     private service: GenericService<Address>,
   ) {}
